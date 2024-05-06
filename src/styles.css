@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.titlebar {
+    user-select: none;
+    -webkit-app-region: drag;
+  }
+
+  body {
+    overscroll-behavior: none;
+    touch-action: none;
+  }
