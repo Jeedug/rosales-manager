@@ -2,6 +2,7 @@ import React from "react";
 import TittleBarStyle from "../../components/navigation/TittleBarStyle";
 
 export default function MainLayout({ children }) {
+  
   const handleContextDisable = (event) => {
     event.preventDefault();
   };

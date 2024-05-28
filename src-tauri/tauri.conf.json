@@ -7,14 +7,11 @@
   },
   "package": {
     "productName": "lodigy",
-    "version": "0.0.1"
+    "version": "0.0.2"
   },
   "tauri": {
     "allowlist": {
-      "all": false,
-      "notification": {
-        "all": true
-      },
+      "all": true,
       "window": {
         "all": false,
         "close": true,
@@ -31,7 +28,6 @@
         "open": true
       }
     },
-    
     "windows": [
       {
         "title": "lodigy",

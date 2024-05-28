@@ -13,7 +13,7 @@ import {
   ContextMenuSubContent,
   ContextMenuSubTrigger,
   ContextMenuTrigger,
-} from "./ContextMenu";
+} from "../shadcdn/ContextMenu";
 
 import { Maximize2, X, Minimize2 } from "lucide-react";
 
@@ -27,12 +27,7 @@ export default function TittleBarWrapper({ children }) {
     event.stopPropagation();
   };
 
-  const handleToggleWindow = (event) => {
-    appWindow.toggleMaximize();
-    event.stopPropagation();
-  };
-
-  const handleMaximizeWindow = (event)=>{
+  const handleMaximizeWindow = (event)=>{ 
     appWindow.maximize();
   }
 

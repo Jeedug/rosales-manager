@@ -1,6 +1,5 @@
 import React, { useState, useRef } from "react";
 import { appWindow } from "@tauri-apps/api/window";
-import reactLogo from "../../assets/react.svg";
 import { AnimatePresence, motion } from "framer-motion";
 import CloseWindow from "../icons/CloseWindow";
 import MinimizeWindow from "../icons/MinimizeWindow";
@@ -27,40 +26,44 @@ export default function TittleBarStyle() {
     event.stopPropagation();
   };
 
-  const disableContext = (event)=>{
-    event.preventDefault()
-  }
+  const disableContext = (event) => {
+    event.preventDefault();
+  };
 
   return (
-    <TittleBarWrapper>
-      <div
-        data-tauri-drag-region
-        className="fixed px-1 items-center rounded-tl-xl rounded-tr-xl flex top-0 left-0 right-0 justify-between h-10 select-none"
-      >
-        <DropdownButton />
-
-        <figure className="bg-transparent w-full h-[4px] absolute top-0" onContextMenu={disableContext} />
-        <div className="flex flex-row">
-          <div
-            onClick={handleMinimizeWindow}
-            className="p-2 px-4 from-transparent to-transparent bg-gradient-to-b hover:from-gray-300/10 hover:to-gray-300/25 rounded-tr-xl flex items-center rounded-lg"
-          >
-            <MinimizeWindow />
-          </div>
-          <div
-            onClick={handleToggleWindow}
-            className="p-2 px-4 from-transparent to-transparent bg-gradient-to-b hover:from-gray-300/10 hover:to-gray-300/25 rounded-tr-xl flex items-center rounded-lg"
-          >
-            <ToggleWindow />
-          </div>
-          <div
-            onClick={handleCloseWindow}
-            className="p-2 px-4 from-transparent to-transparent bg-gradient-to-b hover:from-gray-300/10 hover:to-gray-300/25 rounded-tr-xl flex items-center rounded-lg"
-          >
-            <CloseWindow />
+    <>
+      <TittleBarWrapper>
+        <div
+          data-tauri-drag-region
+          className="fixed px-1 items-center rounded-tl-xl rounded-tr-xl flex top-0 left-0 right-0 justify-end h-10 select-none"
+        >
+          <figure
+            className="bg-transparent w-full h-[4px] absolute top-0"
+            onContextMenu={disableContext}
+          />
+          <div className="flex flex-row">
+            <div
+              onClick={handleMinimizeWindow}
+              className="p-2 px-4 from-transparent to-transparent bg-gradient-to-b hover:from-gray-300/10 hover:to-gray-300/25 rounded-tr-xl flex items-center rounded-lg"
+            >
+              <MinimizeWindow />
+            </div>
+            <div
+              onClick={handleToggleWindow}
+              className="p-2 px-4 from-transparent to-transparent bg-gradient-to-b hover:from-gray-300/10 hover:to-gray-300/25 rounded-tr-xl flex items-center rounded-lg"
+            >
+              <ToggleWindow />
+            </div>
+            <div
+              onClick={handleCloseWindow}
+              className="p-2 px-4 from-transparent to-transparent bg-gradient-to-b hover:from-gray-300/10 hover:to-gray-300/25 rounded-tr-xl flex items-center rounded-lg"
+            >
+              <CloseWindow />
+            </div>
           </div>
         </div>
-      </div>
-    </TittleBarWrapper>
+      </TittleBarWrapper>
+      <DropdownButton />
+    </>
   );
 }
