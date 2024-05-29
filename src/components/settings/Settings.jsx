@@ -12,47 +12,40 @@ import {
 } from "../shadcdn/Drawer";
 
 import React from "react";
+import Tab from "./Tab";
+import { Settings2, ArchiveRestore } from "lucide-react";
+import Preferences from "./Preferences";
+import Files from "./Files";
 
 export default function Settings() {
+  const [selected, setSelected] = React.useState("Preferences");
+
   return (
     <DrawerContent className="bg-white items-start  h-screen w-[500px]  outline-none">
       <span className="px-10 text-2xl text-gray-700 font-light tracking-wide">
         Settings
       </span>
-      <main className="flex flex-row pt-5 h-full w-full mt-5 border-b border">
+      <main className="flex flex-row pt-5 h-full w-full mt-5 border-l-transparent border-r-transparent border-2 border-gray-200 ">
         <nav className="h-full w-[120px] flex flex-col text-gray-500 font-light items-start">
-          <div className="flex flex-row gap-2 items-center justify-start px-2 w-full h-[30px] text-gray-700">
-            <RightArrow />
-            <span className=" text-[13px]">
-              General
-            </span>
-          </div>
-
-          <div className="flex flex-row gap-2 items-center justify-start px-2 w-full h-[30px] text-gray-400 cursor-pointer">
-            <PinRightIcon />
-            <span className="text-[13px]">
-              Files
-            </span>
-          </div>
-
-          <div className="flex flex-row gap-2 items-center justify-start px-2 w-full h-[30px] text-gray-400 cursor-pointer">
-            <PinRightIcon />
-            <span className="text-[13px]">
-              Preferences
-            </span>
-          </div>
-
-          <div className="flex flex-row gap-2 items-center justify-start px-2 w-full h-[30px] text-gray-400 cursor-pointer">
-            <PinRightIcon />
-            <span className="text-[13px]">
-              Notifications
-            </span>
-          </div>
+          <Tab
+            selected={selected}
+            setSelected={setSelected}
+            title="Preferences"
+          >
+            <Settings2 className="h-4 w-4 " />
+          </Tab>
+          <Tab 
+            selected={selected} 
+            setSelected={setSelected} 
+            title="Files"
+          >
+            <ArchiveRestore className="h-4 w-4 " />
+          </Tab>
         </nav>
 
-
-        <div className="w-full h-full ">
-
+        <div className="w-full h-full px-10 relative overflow-y-auto">
+          <Preferences selected={selected} />
+          <Files selected={selected} />
         </div>
       </main>
 

@@ -1,7 +1,6 @@
 import logo from "./assets/logo.png";
 import MainLayout from "./components/layouts/MainLayout";
 import RightArrow from "./components/icons/RightArrow";
-import Settings from "./components/settings/Settings";
 
 export default function App() {
 

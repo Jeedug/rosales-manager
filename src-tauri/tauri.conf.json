@@ -23,9 +23,14 @@
         "unminimize": true,
         "startDragging": true
       },
-      "shell": {
-        "all": false,
-        "open": true
+      "fs": {
+        "readDir": true,
+        "scope": [
+          "**"
+        ]
+      },
+      "path": {
+        "all": true
       }
     },
     "windows": [
