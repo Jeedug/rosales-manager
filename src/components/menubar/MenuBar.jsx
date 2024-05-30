@@ -1,13 +1,12 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { appWindow } from "@tauri-apps/api/window";
-import { AnimatePresence, motion } from "framer-motion";
 import CloseWindow from "../icons/CloseWindow";
 import MinimizeWindow from "../icons/MinimizeWindow";
 import ToggleWindow from "../icons/ToggleWindow";
-import { DropdownButton } from "../buttons/DropdownButton";
-import TittleBarWrapper from "../menus/TitleBarWrapper";
+import MenuBarContext from "./MenuBarContext";
+import SettingsButton from '../settings/SettingsButton'
 
-export default function TittleBarStyle() {
+export default function MenuBar() {
   const [isMaximized, setIsMaximized] = useState(false);
 
   const handleCloseWindow = () => {
@@ -32,7 +31,7 @@ export default function TittleBarStyle() {
 
   return (
     <>
-      <TittleBarWrapper>
+      <MenuBarContext>
         <div
           data-tauri-drag-region
           className="fixed px-1 items-center rounded-tl-xl rounded-tr-xl flex top-0 left-0 right-0 justify-end h-10 select-none"
@@ -62,8 +61,8 @@ export default function TittleBarStyle() {
             </div>
           </div>
         </div>
-      </TittleBarWrapper>
-      <DropdownButton />
+      </MenuBarContext>
+      <SettingsButton />
     </>
   );
 }

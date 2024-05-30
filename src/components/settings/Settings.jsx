@@ -1,14 +1,7 @@
-import { PinRightIcon } from "@radix-ui/react-icons";
-import RightArrow from "../icons/RightArrow";
 import {
-  Drawer,
   DrawerClose,
   DrawerContent,
-  DrawerDescription,
   DrawerFooter,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
 } from "../shadcdn/Drawer";
 
 import React from "react";

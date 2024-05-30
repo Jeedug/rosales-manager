@@ -1,23 +1,16 @@
 import { appWindow } from "@tauri-apps/api/window";
 import {
   ContextMenu,
-  ContextMenuCheckboxItem,
   ContextMenuContent,
   ContextMenuItem,
-  ContextMenuLabel,
-  ContextMenuRadioGroup,
-  ContextMenuRadioItem,
   ContextMenuSeparator,
   ContextMenuShortcut,
-  ContextMenuSub,
-  ContextMenuSubContent,
-  ContextMenuSubTrigger,
   ContextMenuTrigger,
 } from "../shadcdn/ContextMenu";
 
 import { Maximize2, X, Minimize2 } from "lucide-react";
 
-export default function TittleBarWrapper({ children }) {
+export default function MenuBarContext({ children }) {
   const handleCloseWindow = () => {
     appWindow.close();
   };

@@ -1,5 +1,5 @@
 import React from "react";
-import TittleBarStyle from "../../components/navigation/TittleBarStyle";
+import TittleBarStyle from "../menubar/MenuBar";
 
 export default function MainLayout({ children }) {
   
