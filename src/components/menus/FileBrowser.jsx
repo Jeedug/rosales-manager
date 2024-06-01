@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import { resolve, desktopDir } from "@tauri-apps/api/path";
 import { readDir } from "@tauri-apps/api/fs";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
+import { useSettingsStore } from "../../stores/settings";
+import useSettings from "../../hooks/settings";
 
 const Item = ({ handleClick, file }) => (
   <div
     key={file.name}
-    className={file.isDir ? "dir" : "file"}
+    className="hover:bg-slate-50 rounded-full py-[0.5px] px-1 cursor-pointer"
     onClick={() => {
       if (!file.isDir) return;
 
@@ -22,11 +24,12 @@ const Item = ({ handleClick, file }) => (
 const FileBrowser = () => {
   const [files, setFiles] = useState([]);
   const [currentPath, setCurrentPath] = useState("");
+  const {localSettings, updateSavePath} = useSettings();
 
   useEffect(() => {
     async function getHomeDir() {
-      const desktopDirPath = await desktopDir();
-      setCurrentPath(desktopDirPath);
+      setCurrentPath(localSettings.files.savePath);
+      console.log(localSettings.savePath)
     }
 
     getHomeDir();
@@ -59,18 +62,19 @@ const FileBrowser = () => {
     } else {
       const newPath = await resolve(currentPath, name);
       setCurrentPath(newPath);
+      updateSavePath(newPath);
     }
   }
 
   return (
-    <DropdownMenu >
-      <DropdownMenuTrigger>
-        <div className="border px-2 py-2 rounded-full bg-slate-50 text-[13px]">
-          {currentPath.slice(0, -1)}
+    <DropdownMenu>
+      <DropdownMenuTrigger className="w-full justify-start flex items-start ">
+        <div className="border px-2 py-1 rounded-full bg-slate-50 text-[13px] w-full items-start text-start">
+          {currentPath}
         </div>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="translate ">
-        <div className=" h-[200px] w-[300px] right-0 px-3 py-4 absolute overflow-y-auto shadow-md rounded-xl">
+      <DropdownMenuContent className="translate">
+        <div className="px-3  w-[300px] left-0 h-[250px] py-4 relative overflow-y-auto shadow-md rounded-xl">
           {files.map((file) => (
             <Item handleClick={handleClick} file={file} />
           ))}

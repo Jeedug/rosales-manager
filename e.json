@@ -1,0 +1,11 @@
+{
+    "preferences": {
+        "color": "red",
+        "size": "large"
+    },
+    "files": [
+        "file1.txt",
+        "file2.txt",
+        "file3.txt"
+    ]
+}

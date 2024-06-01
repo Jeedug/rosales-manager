@@ -1,8 +1,11 @@
 import logo from "./assets/logo.png";
 import MainLayout from "./components/layouts/MainLayout";
 import RightArrow from "./components/icons/RightArrow";
+import useSettings from "./hooks/settings";
 
 export default function App() {
+
+  useSettings();
 
   return (
     <MainLayout>

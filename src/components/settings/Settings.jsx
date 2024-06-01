@@ -1,17 +1,20 @@
-import {
-  DrawerClose,
-  DrawerContent,
-  DrawerFooter,
-} from "../shadcdn/Drawer";
+import { DrawerClose, DrawerContent, DrawerFooter } from "../shadcdn/Drawer";
 
-import React from "react";
+import React, { useEffect } from "react";
 import Tab from "./Tab";
 import { Settings2, ArchiveRestore } from "lucide-react";
 import Preferences from "./Preferences";
 import Files from "./Files";
+import useSettings from "../../hooks/settings";
 
 export default function Settings() {
   const [selected, setSelected] = React.useState("Preferences");
+  const { saveToLocalStorage, hasChanged } = useSettings();
+
+  const handleSaveSettings = () => {
+    saveToLocalStorage();
+  };
+  console.log(hasChanged);
 
   return (
     <DrawerContent className="bg-white items-start  h-screen w-[500px]  outline-none">
@@ -27,11 +30,7 @@ export default function Settings() {
           >
             <Settings2 className="h-4 w-4 " />
           </Tab>
-          <Tab 
-            selected={selected} 
-            setSelected={setSelected} 
-            title="Files"
-          >
+          <Tab selected={selected} setSelected={setSelected} title="Files">
             <ArchiveRestore className="h-4 w-4 " />
           </Tab>
         </nav>
@@ -50,12 +49,24 @@ export default function Settings() {
           >
             Cancel
           </button>
-          <button
-            variant="outline"
-            className="bg-blue-500 hover:bg-blue-600 rounded-full text-white px-6 py-2 text-[13px] transition"
-          >
-            Accept
-          </button>
+          {hasChanged ? (
+            <button
+              variant="outline"
+              className="bg-blue-500 hover:bg-blue-600 rounded-full text-white px-6 py-2 text-[13px] transition"
+              onClick={handleSaveSettings}
+            >
+              Save
+            </button>
+          ) : (
+            <button
+              variant="outline"
+              className="bg-blue-500/50  rounded-full text-white px-6 py-2 text-[13px] transition"
+              onClick={handleSaveSettings}
+              disabled="true"
+            >
+              Saved
+            </button>
+          )}
         </DrawerClose>
       </DrawerFooter>
       <figure className="absolute right-1 bottom-[35%] h-[200px] w-[7px] rounded-full bg-gray-700/10"></figure>
