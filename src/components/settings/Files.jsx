@@ -1,5 +1,5 @@
 import React from "react";
-import FileBrowser from "../menus/FileBrowser";
+import FileBrowser from "./FileBrowser";
 
 export default function Files({ selected }) {
   return (

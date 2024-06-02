@@ -11,7 +11,7 @@ export default function MainLayout({ children }) {
     <div
       draggable="false"
       // onContextMenu={handleContextDisable}
-      className="bg-slate-100 cursor-default rounded-xl h-screen w-full text-gray-600 font-medium items-center justify-center select-none flex flex-col border border-gray-200 gap-5 "
+      className="bg-white overflow-hidden  cursor-default rounded-xl h-screen w-full text-gray-600 font-medium flex flex-row items-center justify-center select-none border border-gray-200"
     >
       <TittleBarStyle />
       {children}

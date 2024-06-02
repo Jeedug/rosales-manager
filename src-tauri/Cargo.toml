@@ -1,7 +1,7 @@
 [package]
 name = "lodigy"
 version = "0.0.1"
-description = "Lodigy"
+description = "Revoke"
 authors = ["Jesus Eduardo"]
 edition = "2021"
 

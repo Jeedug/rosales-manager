@@ -1,18 +1,16 @@
-import logo from "./assets/logo.png";
 import MainLayout from "./components/layouts/MainLayout";
-import RightArrow from "./components/icons/RightArrow";
-import useSettings from "./hooks/settings";
+import PaperNav from "./components/paper/PaperNav";
+import PaperMain from "./components/paper/PaperMain";
 
 export default function App() {
-
-  useSettings();
-
   return (
-    <MainLayout>
-      <h1 className="font-bold text-3xl">Welcomee</h1>
-      <img src={logo} className="h-[120px]" />
-      <p className="font-normal text-sm">Click on the Tauri, Vite, and React logos to learn more.</p>
-      <a href="#" className="text-blue-400 text-sm font-light flex flex-row items-center gap-1">Click to learn more <RightArrow className="text-blue-400" /></a>
-    </MainLayout>
+    <>
+      <MainLayout>
+        <div className="flex flex-row w-full h-screen relative ">
+          <PaperNav />
+          <PaperMain />
+        </div>
+      </MainLayout>
+    </>
   );
 }

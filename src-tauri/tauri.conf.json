@@ -36,8 +36,8 @@
     "windows": [
       {
         "title": "lodigy",
-        "minWidth": 800,
-        "minHeight": 600,
+        "minWidth": 500,
+        "minHeight": 500,
         "decorations": false,
         "transparent": true,
         "resizable": true,

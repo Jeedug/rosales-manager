@@ -1,14 +1,7 @@
 import { create } from "zustand";
 
 export const useSettingsStore = create((set, get) => ({
-  settings: JSON.parse(localStorage.getItem("settings")) || {
-    preferences: {
-      fontSize: 14,
-    },
-    files: {
-      savePath: "",
-    },
-  },
+  settings: JSON.parse(localStorage.getItem("settings")) || undefined,
   setSavePath: (savePath) =>
     set((state) => {
       const newSettings = {

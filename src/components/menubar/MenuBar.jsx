@@ -34,7 +34,7 @@ export default function MenuBar() {
       <MenuBarContext>
         <div
           data-tauri-drag-region
-          className="fixed px-1 items-center rounded-tl-xl rounded-tr-xl flex top-0 left-0 right-0 justify-end h-10 select-none"
+          className="fixed px-1 items-center rounded-tl-xl rounded-tr-xl flex top-0 left-0 right-0 justify-end h-10 select-none z-10"
         >
           <figure
             className="bg-transparent w-full h-[4px] absolute top-0"

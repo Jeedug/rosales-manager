@@ -11,7 +11,6 @@ const Item = ({ handleClick, file }) => (
     className="hover:bg-slate-50 rounded-full py-[0.5px] px-1 cursor-pointer"
     onClick={() => {
       if (!file.isDir) return;
-
       handleClick(file.name);
     }}
   >
@@ -59,8 +58,9 @@ const FileBrowser = () => {
     if (name === ".") {
       const desktopPath = await desktopDir();
       setCurrentPath(desktopPath);
+      updateSavePath(desktopPath);
     } else {
-      const newPath = await resolve(currentPath, name);
+      const newPath = await resolve(currentPath, name); 
       setCurrentPath(newPath);
       updateSavePath(newPath);
     }
@@ -69,12 +69,12 @@ const FileBrowser = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="w-full justify-start flex items-start ">
-        <div className="border px-2 py-1 rounded-full bg-slate-50 text-[13px] w-full items-start text-start">
+        <div className="border px-2 py-1 rounded-full  text-[13px] w-full items-start text-start">
           {currentPath}
         </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="translate">
-        <div className="px-3  w-[300px] left-0 h-[250px] py-4 relative overflow-y-auto shadow-md rounded-xl">
+        <div className="px-3 w-[300px] left-0 max-h-[260px] py-4 relative overflow-y-auto shadow-md rounded-xl">
           {files.map((file) => (
             <Item handleClick={handleClick} file={file} />
           ))}

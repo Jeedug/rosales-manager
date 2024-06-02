@@ -14,7 +14,6 @@ export default function Settings() {
   const handleSaveSettings = () => {
     saveToLocalStorage();
   };
-  console.log(hasChanged);
 
   return (
     <DrawerContent className="bg-white items-start  h-screen w-[500px]  outline-none">
@@ -42,32 +41,32 @@ export default function Settings() {
       </main>
 
       <DrawerFooter className="flex flex-row justify-end px-10 w-full">
-        <DrawerClose className="flex flex-row gap-3 ">
+        <DrawerClose className="">
           <button
             variant="outline"
             className="py-2 px-6 border border-gray-400 rounded-full text-black text-[13px] hover:bg-gray-100 transition"
           >
-            Cancel
+            Close
           </button>
-          {hasChanged ? (
-            <button
-              variant="outline"
-              className="bg-blue-500 hover:bg-blue-600 rounded-full text-white px-6 py-2 text-[13px] transition"
-              onClick={handleSaveSettings}
-            >
-              Save
-            </button>
-          ) : (
-            <button
-              variant="outline"
-              className="bg-blue-500/50  rounded-full text-white px-6 py-2 text-[13px] transition"
-              onClick={handleSaveSettings}
-              disabled="true"
-            >
-              Saved
-            </button>
-          )}
         </DrawerClose>
+        {hasChanged ? (
+          <button
+            variant="outline"
+            className="bg-blue-500 hover:bg-blue-600 rounded-full text-white px-6 py-2 text-[13px] transition"
+            onClick={handleSaveSettings}
+          >
+            Save
+          </button>
+        ) : (
+          <button
+            variant="outline"
+            className="bg-blue-500/50  rounded-full text-white px-6 py-2 text-[13px] transition"
+            onClick={handleSaveSettings}
+            disabled={true}
+          >
+            Saved
+          </button>
+        )}
       </DrawerFooter>
       <figure className="absolute right-1 bottom-[35%] h-[200px] w-[7px] rounded-full bg-gray-700/10"></figure>
     </DrawerContent>
