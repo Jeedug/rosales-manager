@@ -17,9 +17,7 @@
         "close": true,
         "hide": true,
         "show": true,
-        "maximize": true,
         "minimize": true,
-        "unmaximize": true,
         "unminimize": true,
         "startDragging": true
       },
@@ -36,13 +34,13 @@
     "windows": [
       {
         "title": "lodigy",
-        "minWidth": 500,
-        "minHeight": 500,
+        "minWidth": 600,
+        "minHeight": 600,
         "decorations": false,
         "transparent": true,
         "resizable": true,
         "center": true,
-        "maxWidth": 1200,
+        "maxWidth": 600,
         "maxHeight": 800
       }
     ],
