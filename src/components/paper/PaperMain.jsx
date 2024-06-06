@@ -1,76 +1,138 @@
 import { Plus, Timer, Wrench } from "lucide-react";
-import React from "react";
+import React, { useState } from "react";
 import RenderData from "./RenderData";
 
-const data = [
+const initialData = [
+  
   {
     type: "row",
     data: [
       {
         type: "title",
-        text: "hola mi caballero",
+        text: "hola er",
         timer: null,
         status: "pending",
       },
       {
         type: "title",
-        text: "hola mi caballero",
+        text: "hola",
         timer: null,
         status: "pending",
       }
     ]
   },
   {
-    type: "column",
+    type: "columnRow",
     data: [
       {
-        type: "title",
-        text: "hello",
-        timer: null,
-        status: "pending",
+        type: "column",
+        data: [
+          {
+            type: "title",
+            text: "hello 1",
+            timer: null,
+            status: "pending",
+          },
+          {
+            type: "paragraph",
+            text: "hellos",
+            timer: null,
+            status: "pending",
+          }
+        ],
       },
       {
-        type: "paragraph",
-        text: "hello",
-        timer: null,
-        status: "pending",
-      },{
-        type: "title",
-        text: "hello",
-        timer: null,
-        status: "pending",
-      }
-    ],
+        type: "column",
+        data: [
+          {
+            type: "title",
+            text: "hello 1",
+            timer: null,
+            status: "pending",
+          },
+          {
+            type: "paragraph",
+            text: "hellos",
+            timer: null,
+            status: "pending",
+          }
+        ],
+      },
+    ]  
   },
   {
-    type: "column",
+    type: "row",
     data: [
       {
         type: "title",
-        text: "hello",
-        timer: null,
-        status: "pending",
-      },
-      {
-        type: "paragraph",
-        text: "hello",
-        timer: null,
-        status: "pending",
-      },{
-        type: "paragraph",
-        text: "hello",
+        text: "hola",
         timer: null,
         status: "pending",
       }
-    ],
+    ]
   },
-  
+  {
+    type: "columnRow",
+    data: [
+      {
+        type: "column",
+        data: [
+          {
+            type: "title",
+            text: "hello 1",
+            timer: null,
+            status: "pending",
+          },
+          {
+            type: "paragraph",
+            text: "hellos",
+            timer: null,
+            status: "pending",
+          }
+        ],
+      },
+      {
+        type: "column",
+        data: [
+          {
+            type: "title",
+            text: "hello 1",
+            timer: null,
+            status: "pending",
+          },
+          {
+            type: "paragraph",
+            text: "hellos",
+            timer: null,
+            status: "pending",
+          }
+        ],
+      },
+      {
+        type: "column",
+        data: [
+          {
+            type: "title",
+            text: "hello 1",
+            timer: null,
+            status: "failed",
+          },
+          {
+            type: "paragraph",
+            text: "hellos",
+            timer: null,
+            status: "pending",
+          }
+        ],
+      }
+    ]  
+  },
 ]
 
 export default function PaperMain() {
 
+  const [data, setData] = useState(initialData);
   
-
   return (
     <div className="flex flex-col w-full">
       <div className="h-full w-full px-4 gap-2 flex flex-col rounded-xl mr-3 text-[13px] font-light pt-16 transition">
