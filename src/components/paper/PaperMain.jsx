@@ -8,16 +8,16 @@ const initialData = [
     type: "row",
     data: [
       {
-        type: "title",
-        text: "hola er",
+        type: "paragraph",
+        text: "hola",
         timer: null,
-        status: "pending",
+        status: null,
       },
       {
         type: "title",
         text: "hola",
         timer: null,
-        status: "pending",
+        status: null,
       }
     ]
   },
@@ -31,13 +31,13 @@ const initialData = [
             type: "title",
             text: "hello 1",
             timer: null,
-            status: "pending",
+            status: null,
           },
           {
             type: "paragraph",
             text: "hellos",
             timer: null,
-            status: "pending",
+            status: null,
           }
         ],
       },
@@ -48,13 +48,13 @@ const initialData = [
             type: "title",
             text: "hello 1",
             timer: null,
-            status: "pending",
+            status: null,
           },
           {
             type: "paragraph",
             text: "hellos",
             timer: null,
-            status: "pending",
+            status: null,
           }
         ],
       },
@@ -67,7 +67,7 @@ const initialData = [
         type: "title",
         text: "hola",
         timer: null,
-        status: "pending",
+        status: null,
       }
     ]
   },
@@ -81,13 +81,13 @@ const initialData = [
             type: "title",
             text: "hello 1",
             timer: null,
-            status: "pending",
+            status: null,
           },
           {
             type: "paragraph",
             text: "hellos",
             timer: null,
-            status: "pending",
+            status: null,
           }
         ],
       },
@@ -98,13 +98,13 @@ const initialData = [
             type: "title",
             text: "hello 1",
             timer: null,
-            status: "pending",
+            status: null,
           },
           {
             type: "paragraph",
             text: "hellos",
             timer: null,
-            status: "pending",
+            status: null,
           }
         ],
       },
@@ -115,13 +115,13 @@ const initialData = [
             type: "title",
             text: "hello 1",
             timer: null,
-            status: "failed",
+            status: null,
           },
           {
             type: "paragraph",
             text: "hellos",
             timer: null,
-            status: "pending",
+            status: null,
           }
         ],
       }

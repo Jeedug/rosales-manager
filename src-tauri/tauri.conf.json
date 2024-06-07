@@ -41,8 +41,8 @@
         "transparent": true,
         "resizable": true,
         "center": true,
-        "maxWidth": 600,
-        "maxHeight": 800
+        "maxWidth": 800,
+        "maxHeight": 600
       }
     ],
     "security": {
