@@ -80,7 +80,8 @@ function ColItem({ rowIndex, colIndex, rowData }) {
               exit={{ opacity: 0, x: -10 }}
               transition={{ duration: 0.2,  }}
           >
-            {"New paragraph"}
+            <span className="text-black">Paragraph</span>
+            <span className="">Image</span>
           </motion.div>
         )}
     </>
@@ -91,7 +92,7 @@ export default function Column({ rowIndex, item }) {
     return (
       <div
         key={rowIndex}
-        className=" justify-start gap-1 border border-l-transparent border-r-transparent border-b-transparent"
+        className=" justify-start gap-1 "
       >
         <div className="flex flex-col w-auto py-1 pr-4">
           {item.data.map((colData, colIndex) =>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function Paragraph({ colIndex, colData }) {
+export default function Paragraph({ colIndex, colData, customStyle }) {
     const [value, setValue] = useState(colData.text);
   
     return (
@@ -9,7 +9,7 @@ export default function Paragraph({ colIndex, colData }) {
         className="w-full items-center flex flex-row gap-1 leading-1"
       >
         <input
-          style={{ width: value.length * 7 }}
+          style={{ width: value?.length * 6, color : customStyle }}
           onChange={(e) => {
             setValue(e.target.value);
           }}

@@ -1,138 +1,11 @@
-import { Plus, Timer, Wrench } from "lucide-react";
+import { AArrowDown, AArrowUp, Delete, Plus, Timer, Trash2, Wrench } from "lucide-react";
 import React, { useState } from "react";
 import RenderData from "./RenderData";
-
-const initialData = [
-  
-  {
-    type: "row",
-    data: [
-      {
-        type: "paragraph",
-        text: "hola",
-        timer: null,
-        status: null,
-      },
-      {
-        type: "title",
-        text: "hola",
-        timer: null,
-        status: null,
-      }
-    ]
-  },
-  {
-    type: "columnRow",
-    data: [
-      {
-        type: "column",
-        data: [
-          {
-            type: "title",
-            text: "hello 1",
-            timer: null,
-            status: null,
-          },
-          {
-            type: "paragraph",
-            text: "hellos",
-            timer: null,
-            status: null,
-          }
-        ],
-      },
-      {
-        type: "column",
-        data: [
-          {
-            type: "title",
-            text: "hello 1",
-            timer: null,
-            status: null,
-          },
-          {
-            type: "paragraph",
-            text: "hellos",
-            timer: null,
-            status: null,
-          }
-        ],
-      },
-    ]  
-  },
-  {
-    type: "row",
-    data: [
-      {
-        type: "title",
-        text: "hola",
-        timer: null,
-        status: null,
-      }
-    ]
-  },
-  {
-    type: "columnRow",
-    data: [
-      {
-        type: "column",
-        data: [
-          {
-            type: "title",
-            text: "hello 1",
-            timer: null,
-            status: null,
-          },
-          {
-            type: "paragraph",
-            text: "hellos",
-            timer: null,
-            status: null,
-          }
-        ],
-      },
-      {
-        type: "column",
-        data: [
-          {
-            type: "title",
-            text: "hello 1",
-            timer: null,
-            status: null,
-          },
-          {
-            type: "paragraph",
-            text: "hellos",
-            timer: null,
-            status: null,
-          }
-        ],
-      },
-      {
-        type: "column",
-        data: [
-          {
-            type: "title",
-            text: "hello 1",
-            timer: null,
-            status: null,
-          },
-          {
-            type: "paragraph",
-            text: "hellos",
-            timer: null,
-            status: null,
-          }
-        ],
-      }
-    ]  
-  },
-]
+import file from "../../../file.json";
 
 export default function PaperMain() {
+  const [data, setData] = useState(file.data);
 
-  const [data, setData] = useState(initialData);
-  
   return (
     <div className="flex flex-col w-full">
       <div className="h-full w-full px-4 gap-2 flex flex-col rounded-xl mr-3 text-[13px] font-light pt-16 transition">
@@ -140,9 +13,10 @@ export default function PaperMain() {
           <span className="text-[24px] font-semibold leading-6">Timers</span>
 
           <div className="flex flex-row gap-1">
-            <Timer className="w-[32px] h-[32px] rounded-full p-2 hover:bg-gray-50 cursor-pointer hover:text-black transition text-gray-400" />
-            <Wrench className="w-[32px] h-[32px] rounded-full p-2 hover:bg-gray-50 cursor-pointer hover:text-black transition text-gray-400" />
+            <AArrowUp className="w-[32px] h-[32px] rounded-full p-2 hover:bg-gray-50 cursor-pointer hover:text-black transition text-gray-400" />
+            <AArrowDown className="w-[32px] h-[32px] rounded-full p-2 hover:bg-gray-50 cursor-pointer hover:text-black transition text-gray-400" />
             <Plus className="w-[32px] h-[32px] rounded-full p-2 hover:bg-gray-50 cursor-pointer hover:text-black transition text-gray-400" />
+            <Trash2 className="w-[32px] h-[32px] rounded-full p-2 hover:bg-gray-50 cursor-pointer hover:text-black transition text-gray-400" />
           </div>
         </div>
 

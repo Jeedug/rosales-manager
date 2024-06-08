@@ -2,6 +2,8 @@ import React, { useRef, useState } from "react";
 import Paragraph from "./Paragraph";
 import Title from "./Title";
 import { motion } from "framer-motion";
+import Image from "./Image";
+import { Plus, PlusIcon } from "lucide-react";
 
 function AddParagraphInRow({ setIsHoveringEdit, setWantsto }) {
   const initialPosition = useRef(null);
@@ -57,13 +59,14 @@ function RowItem({ rowIndex, colIndex, rowData }) {
           paddingLeft: colIndex > 0 ? "8px" : "0px",
           color: wantsTo === "delete" ? "#b23f3f" : "#000000",
         }}
-        className=" h-[10px] items-center flex flex-row gap-2 py-3 pr-2 relative"
+        className=" h-[10px] items-center flex flex-row gap-2 py-2 pr-2 relative "
       >
         {rowData.type === "paragraph" ? (
-          <Paragraph key={rowIndex} colData={rowData} colIndex={rowIndex} />
-        ) : (
-          <Title key={rowIndex} colData={rowData} colIndex={rowIndex} customStyle={{ color: wantsTo === "delete" ? "#b23f3f" : "#000000", }} />
-        )}
+          <Paragraph key={rowIndex} colData={rowData} colIndex={rowIndex} customStyle={wantsTo === "delete" ? "#b23f3f" : "#000000"} />
+        ) : rowData.type === "title" ? (
+          <Title key={rowIndex} colData={rowData} colIndex={rowIndex} customStyle={wantsTo === "delete" ? "#b23f3f" : "#000000"} />
+        ) : <Image key={rowIndex} colIndex={rowIndex} colData={rowData} />
+        }
 
         <AddParagraphInRow setWantsto={setWantsTo} setIsHoveringEdit={setIsHoveringEdit} />
       </div>
@@ -74,12 +77,13 @@ function RowItem({ rowIndex, colIndex, rowData }) {
           style={{
             paddingLeft: colIndex > 0 ? "8px" : "0px",
           }}
-          className=" h-[10px] pl-5 ml-2 items-center whitespace-nowrap flex flex-row gap-2 py-3  pr-2 relative text-gray-400"
+          className=" h-[12px] flex flex-col pb-4 pl-5 ml-2 items-center whitespace-nowra gap-2 justify-center pr-2 relative text-gray-400"
           initial={{ opacity: 0, y: -10, width: 0 }}
           animate={{ opacity: 1, y: 0, width: "auto" }}
           transition={{ duration: 0.2 }}
         >
-          {"New paragraph"}
+          <span className="h-[2px] text-black">Paragraph</span>
+          <span className="h-[2px] ">Image</span>
         </motion.div>
       ) : ""}
     </>
@@ -88,7 +92,7 @@ function RowItem({ rowIndex, colIndex, rowData }) {
 
 export default function Row({ rowIndex, item }) {
   return (
-    <div className="  flex flex-row items-center relative border border-l-transparent border-r-transparent border-b-transparent">
+    <div className="  flex flex-row items-center relative py-1">
       {item.data.map((rowData, colIndex) => (
         <RowItem colindex={colIndex} rowIndex={rowIndex} rowData={rowData} />
       ))}
