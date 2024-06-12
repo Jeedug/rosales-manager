@@ -11,7 +11,7 @@ export default function Title({ colIndex, colData, customStyle }) {
       >
         <input
           style={{ 
-            width: value?.length * 7,
+            width: value?.length * 8 - value.length - 5,
             color : customStyle,
            }}
           onChange={(e) => {

@@ -6,15 +6,14 @@ export default function Paragraph({ colIndex, colData, customStyle }) {
     return (
       <div
         key={colIndex}
-        className="w-full items-center flex flex-row gap-1 leading-1"
+        className="w-full items-center flex flex-row "
       >
         <input
-          style={{ width: value?.length * 6, color : customStyle }}
+          style={{ width: value?.length * 7, color : customStyle }}
           onChange={(e) => {
             setValue(e.target.value);
           }}
           onBlur={()=>{
-            console.log(value.length)
             if (!value.length){
               console.log("perdido")
             }

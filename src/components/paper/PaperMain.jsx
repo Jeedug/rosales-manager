@@ -1,4 +1,4 @@
-import { AArrowDown, AArrowUp, Delete, Plus, Timer, Trash2, Wrench } from "lucide-react";
+import { AArrowDown, AArrowUp, Delete, ImageDownIcon, Plus, Timer, Trash2, Wrench } from "lucide-react";
 import React, { useState } from "react";
 import RenderData from "./RenderData";
 import file from "../../../file.json";
@@ -15,8 +15,8 @@ export default function PaperMain() {
           <div className="flex flex-row gap-1">
             <AArrowUp className="w-[32px] h-[32px] rounded-full p-2 hover:bg-gray-50 cursor-pointer hover:text-black transition text-gray-400" />
             <AArrowDown className="w-[32px] h-[32px] rounded-full p-2 hover:bg-gray-50 cursor-pointer hover:text-black transition text-gray-400" />
-            <Plus className="w-[32px] h-[32px] rounded-full p-2 hover:bg-gray-50 cursor-pointer hover:text-black transition text-gray-400" />
             <Trash2 className="w-[32px] h-[32px] rounded-full p-2 hover:bg-gray-50 cursor-pointer hover:text-black transition text-gray-400" />
+            <ImageDownIcon className="w-[32px] h-[32px] rounded-full p-2 hover:bg-gray-50 cursor-pointer hover:text-black transition text-gray-400" />
           </div>
         </div>
 

@@ -26,3 +26,5 @@ export const useSettingsStore = create((set, get) => ({
     }),
   setSettings: (newSettings) => set({ settings: newSettings }),
 }));
+
+
