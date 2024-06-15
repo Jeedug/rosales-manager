@@ -1,16 +1,16 @@
-import { AArrowDown, AArrowUp, Delete, ImageDownIcon, Plus, Timer, Trash2, Wrench } from "lucide-react";
-import React, { useState } from "react";
+import { AArrowDown, AArrowUp, ImageDownIcon, Trash2 } from "lucide-react";
+import React, { useEffect } from "react";
 import RenderData from "./RenderData";
-import file from "../../../file.json";
+import useCurrentNote from "../../stores/currentNote";
 
 export default function PaperMain() {
-  const [data, setData] = useState(file.data);
+  const currentNote = useCurrentNote((state) => state.note);
 
   return (
     <div className="flex flex-col w-full">
       <div className="h-full w-full px-4 gap-2 flex flex-col rounded-xl mr-3 text-[13px] font-light pt-16 transition">
         <div className="flex flex-row justify-between items-center ">
-          <span className="text-[24px] font-semibold leading-6">Timers</span>
+          <span className="text-[24px] font-semibold leading-6">{ currentNote?.name }</span>
 
           <div className="flex flex-row gap-1">
             <AArrowUp className="w-[32px] h-[32px] rounded-full p-2 hover:bg-gray-50 cursor-pointer hover:text-black transition text-gray-400" />
@@ -26,7 +26,7 @@ export default function PaperMain() {
           <span className="font-medium">0 Failed</span>
         </div>
 
-        <RenderData data={data} />
+        <RenderData data={currentNote?.data} />
       </div>
 
       <div className="flex flex-row gap-3 w-full py-2 border items-center px-5 justify-end border-l-transparent border-r-transparent bottom-0 relative">

@@ -1,8 +1,8 @@
 import { create } from "zustand";
 
 const useCurrentNote = create((set) => ({
-  note: "",
+  note: undefined,
   setNote: (note) => set({ note }),
 }));
 
-export default useNote;
+export default useCurrentNote;

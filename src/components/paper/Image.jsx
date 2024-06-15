@@ -18,7 +18,7 @@ export default function Image({ colIndex, colData, customStyle }) {
             <button
               className="relative"
             >
-              <img src={src} className=" object-fit h-5 " />
+              <img src={src} className="rounded-md object-fit h-5 " />
             </button>
           </DialogTrigger>
 
