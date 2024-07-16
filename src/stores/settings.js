@@ -24,6 +24,17 @@ export const useSettingsStore = create((set, get) => ({
       };
       return { settings: newSettings };
     }),
+  setKey: (key) =>
+    set((state) => {
+      const newSettings = {
+        ...state.settings,
+        access: {
+          ...state.settings.access,
+          key,
+        },
+      };
+      return { settings: newSettings };
+    }),
   setSettings: (newSettings) => set({ settings: newSettings }),
 }));
 

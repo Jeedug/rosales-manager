@@ -4,13 +4,19 @@
     "beforeBuildCommand": "npm run build",
     "devPath": "http://localhost:1420",
     "distDir": "../dist"
+    
   },
   "package": {
-    "productName": "lodigy",
+    "productName": "rosales-admin",
     "version": "0.0.2"
   },
   "tauri": {
     "allowlist": {
+      "http": {
+        "all": true,
+        "request": true ,
+        "scope": ["https://viajesrosales.netlify.app/*"]
+      },
       "all": true,
       "window": {
         "all": false,
@@ -34,7 +40,7 @@
     
     "windows": [
       {
-        "title": "lodigy",
+        "title": "Rosales Manager",
         "minWidth": 600,
         "minHeight": 600,
         "decorations": false,
@@ -46,12 +52,12 @@
       }
     ],
     "security": {
-      "csp": null
+      "csp": ""
     },
     "bundle": {
       "active": true,
       "targets": "all",
-      "identifier": "com.lodigy.dev",
+      "identifier": "com.rosales.dev",
       "icon": [
         "icons/32x32.png",
         "icons/128x128.png",

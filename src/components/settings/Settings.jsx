@@ -8,7 +8,7 @@ import Files from "./Files";
 import useSettings from "../../hooks/settings";
 
 export default function Settings() {
-  const [selected, setSelected] = React.useState("Preferences");
+  const [selected, setSelected] = React.useState("Acceso");
   const { saveToLocalStorage, hasChanged } = useSettings();
 
   const handleSaveSettings = () => {
@@ -18,25 +18,22 @@ export default function Settings() {
   return (
     <DrawerContent className="bg-white items-start  h-screen w-[500px]  outline-none">
       <span className="px-10 text-2xl text-gray-700 font-light tracking-wide">
-        Settings
+        Opciones
       </span>
       <main className="flex flex-row pt-5 h-full w-full mt-5 border-l-transparent border-r-transparent border-2 border-gray-200 ">
         <nav className="h-full w-[120px] flex flex-col text-gray-500 font-light items-start">
           <Tab
             selected={selected}
             setSelected={setSelected}
-            title="Preferences"
+            title="Acceso"
           >
             <Settings2 className="h-4 w-4 " />
           </Tab>
-          <Tab selected={selected} setSelected={setSelected} title="Files">
-            <ArchiveRestore className="h-4 w-4 " />
-          </Tab>
+
         </nav>
 
         <div className="w-full h-full px-10 relative overflow-y-auto">
           <Preferences selected={selected} />
-          <Files selected={selected} />
         </div>
       </main>
 
@@ -46,7 +43,7 @@ export default function Settings() {
             variant="outline"
             className="py-2 px-6 border border-gray-400 rounded-full text-black text-[13px] hover:bg-gray-100 transition"
           >
-            Close
+            Cerrar
           </button>
         </DrawerClose>
         {hasChanged ? (
@@ -55,7 +52,7 @@ export default function Settings() {
             className="bg-blue-500 hover:bg-blue-600 rounded-full text-white px-6 py-2 text-[13px] transition"
             onClick={handleSaveSettings}
           >
-            Save
+            Guardar
           </button>
         ) : (
           <button
@@ -64,7 +61,7 @@ export default function Settings() {
             onClick={handleSaveSettings}
             disabled={true}
           >
-            Saved
+            Guardado
           </button>
         )}
       </DrawerFooter>

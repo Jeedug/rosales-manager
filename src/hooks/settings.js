@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useSettingsStore } from "../stores/settings";
 
 export default function useSettings() {
-  const { settings, setSavePath, setFontSize, setSettings } = useSettingsStore();
+  const { settings, setSavePath, setFontSize, setSettings, setKey } = useSettingsStore(); 
 
   const [ hasChanged, setHasChanged ] = useState(false);
 
@@ -22,12 +22,9 @@ export default function useSettings() {
         if (!localSettings) {
           const desktopPath = await desktopDir();
           const newSettings = {
-            preferences: {
-              fontSize: 14,
-            },
-            files: {
-              savePath: desktopPath,
-            },
+            access: {
+              key: undefined
+            }
           };
           setLocalSettings(newSettings);
           setSettings(newSettings);
@@ -50,6 +47,10 @@ export default function useSettings() {
     setFontSize(size);
   };
 
+  const updateKey = (key) => {
+    setKey(key);
+  };
+
   const saveToLocalStorage = () => {
     localStorage.setItem("settings", JSON.stringify(settings));
     setHasChanged(false);
@@ -60,7 +61,8 @@ export default function useSettings() {
     localSettings,
     hasChanged,
     updateSavePath, 
-    updateFontSize, 
+    updateFontSize,
+    updateKey,
     saveToLocalStorage
   };
 }
