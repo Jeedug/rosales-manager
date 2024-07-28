@@ -47,12 +47,12 @@ export default function MenuBar() {
             >
               <MinimizeWindow />
             </div>
-            {/* <div
+            <div
               onClick={handleToggleWindow}
               className="p-2 px-4 from-transparent to-transparent bg-gradient-to-b hover:from-gray-300/10 hover:to-gray-300/25 rounded-tr-xl flex items-center rounded-lg"
             >
               <ToggleWindow />
-            </div> */}
+            </div>
             <div
               onClick={handleCloseWindow}
               className="p-2 px-4 from-transparent to-transparent bg-gradient-to-b hover:from-gray-300/10 hover:to-gray-300/25 rounded-tr-xl flex items-center rounded-lg"

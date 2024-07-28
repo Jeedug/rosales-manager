@@ -15,7 +15,7 @@
       "http": {
         "all": true,
         "request": true ,
-        "scope": ["https://viajesrosales.netlify.app/*"]
+        "scope": ["https://viajesrosales.netlify.app/*","https://contravel.com.mx/", "http://localhost:4321/api/*","https://res.cloudinary.com/doybihxld/*"]
       },
       "all": true,
       "window": {

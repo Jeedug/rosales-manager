@@ -9,15 +9,21 @@ import {
   AccordionTrigger,
 } from "@radix-ui/react-accordion";
 
-export default function TableElement({ keyItem, promotion, setAllPromotions, setEditablePromotion, setSubMenu }) {
+export default function TableElement({
+  keyItem,
+  packageItem,
+  setAllPackages,
+  setEditablePackage,
+  setSubMenu,
+}) {
   const handleDelete = async () => {
     const data = await fetch(
-      "https://viajesrosales.netlify.app/api/promotions/delete",
+      "https://viajesrosales.netlify.app/api/packages/delete",
       {
         method: "POST",
         body: http.Body.json({
           key: keyItem,
-          id: promotion.id,
+          id: packageItem.id,
         }),
         headers: {
           "Content-Type": "application/json",
@@ -28,17 +34,14 @@ export default function TableElement({ keyItem, promotion, setAllPromotions, set
     const res = data;
 
     if (res.status == 200) {
-      setAllPromotions((allSubs) =>
-        allSubs.filter((sub) => sub.id !== promotion.id)
+      setAllPackages((allPacks) =>
+        allPacks.filter((pack) => pack.id !== packageItem.id)
       );
     }
   };
 
   const handleEdit = async () => {
-
-
-    setEditablePromotion(promotion);
-
+    setEditablePackage(packageItem);
 
     setSubMenu("Editor");
   };
@@ -52,25 +55,37 @@ export default function TableElement({ keyItem, promotion, setAllPromotions, set
       >
         <AccordionItem value="item-1">
           <AccordionTrigger className="text-black font-normal w-full h-full flex items-start hover:bg-gray-100">
-            {promotion.name}
+            {packageItem.name}
           </AccordionTrigger>
           <AccordionContent className="text-gray-700 text-[12px] font-light flex flex-row justify-between">
             <div className="flex flex-col justify-between">
               <div className="flex flex-col">
                 <span className="text-black font-bold mr-2">Descripcion:</span>
-                {promotion.description}
+                {packageItem.description}
               </div>
+
+              <div className="flex flex-col gap-1">
+                <span className="text-gray-black font-bold mr-2">Elementos:</span>
+                <ul className="list-disc ml-2">
+                {packageItem.items.map((items, index) => {
+                  return (
+                    <li key={index} className="">{items}</li>
+                  );
+                })}
+                </ul>
+              </div>
+
               <div className="flex flex-row">
                 <span className="text-black font-bold mr-2">Descuento:</span>
-                {promotion.discount}
+                {packageItem.discount}
               </div>
               <div className="flex flex-row">
                 <span className="text-black font-bold mr-2">Precio:</span>
-                {promotion.price}
+                {packageItem.price}
               </div>
               <div className="flex flex-row">
                 <img
-                  src={promotion.image}
+                  src={packageItem.image}
                   alt="image"
                   className="w-20 h-20 mr-2"
                 />
@@ -78,10 +93,10 @@ export default function TableElement({ keyItem, promotion, setAllPromotions, set
             </div>
 
             <div className="flex gap-1 flex-col items-end">
-              <button className="text-blue-500 underline text-sm ">
-                Enviar a correos
-              </button>
-              <button onClick={handleEdit} className="text-yellow-500 underline text-sm ">
+              <button
+                onClick={handleEdit}
+                className="text-yellow-500 underline text-sm "
+              >
                 Editar
               </button>
               <button

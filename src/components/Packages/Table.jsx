@@ -1,10 +1,10 @@
 import useSettings from "../../hooks/settings";
 import TableElement from "./TableElement";
 
-export default function Table({ subMenu, setSubMenu, setEditablePromotion, status, setAllPromotions, allPromotions }) {
+export default function Table({ subMenu, setSubMenu, setEditablePackage, status, setAllPackages, allPackages }) {
   const { settings } = useSettings();
 
-  const handleCreatePromotion = () => {
+  const handleCreatePackage = () => {
     setSubMenu("Creador");
   };
 
@@ -13,19 +13,11 @@ export default function Table({ subMenu, setSubMenu, setEditablePromotion, statu
       <>
         <div className="flex flex-col items-start justify-start pt-10 border w-full px-10">
           <h1 className="text-2xl font-semibold text-center mb-2">
-            Llaves de accesos
+            Paquetes
           </h1>
           <h2 className="text-[12px] text-gray-700 font-normal mr-40 mb-2">
-            Las llaves son un identificador único que se utiliza para acceder a
-            la API de Viajes Rosales, puedes crear llaves para permitir el
-            acceso a mas usuarios. tambien puedes eliminar llaves para elimnar
-            el acceso.
+            Gestionas los paquetes de promocion que se pueden registrar en la pagina, editar y eliminar.
           </h2>
-
-          <h3 className="text-[12px] text-red-500 font-normal mb-5 mr-40">
-            Eliminar todas las llaves de acceso puede eliminar el acceso a todas
-            las funciones de la aplicacion, esto no se puede deshacer.
-          </h3>
 
           <div className="relative overflow-x-auto border w-full sm:rounded-lg">
             <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -37,14 +29,14 @@ export default function Table({ subMenu, setSubMenu, setEditablePromotion, statu
                 </tr>
               </thead>
               <tbody>
-                {allPromotions?.length > 0 ? (
-                  allPromotions.map((promotion) => (
+                {allPackages?.length > 0 ? (
+                  allPackages.map((packageItem) => (
                     <TableElement
-                      key={promotion.id}
+                      key={packageItem.id}
                       keyItem={settings.access.key}
-                      promotion={promotion}
-                      setAllPromotions={setAllPromotions}
-                      setEditablePromotion={setEditablePromotion}
+                      packageItem={packageItem}
+                      setAllPackages={setAllPackages}
+                      setEditablePackage={setEditablePackage}
                       setSubMenu={setSubMenu}
                     />
                   ))
@@ -54,7 +46,7 @@ export default function Table({ subMenu, setSubMenu, setEditablePromotion, statu
                       colSpan="2"
                       className="w-full h-full text-2xl font-semibold text-center py-5"
                     >
-                      Llave de acceso no ingresada o invalida.
+                      Llave no ingresada o no hay elementos en esta lista.
                     </td>
                   </tr>
                 ) : (
@@ -86,9 +78,9 @@ export default function Table({ subMenu, setSubMenu, setEditablePromotion, statu
                     <th
                       scope="row"
                       className="px-6 py-2 font-medium text-gray-900 "
-                      onClick={handleCreatePromotion}
+                      onClick={handleCreatePackage}
                     >
-                      Crear nueva promoción
+                      Crear nuevo paquete
                     </th>
                     <th></th>
                     <th></th>

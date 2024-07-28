@@ -9,6 +9,32 @@ export default function Emails({ selected }) {
   const [allSubscriptions, setAllSubscriptions] = useState([]);
   const [status, setStatus] = useState(false);
 
+  const [imageSrc, setImageSrc] = useState(null);
+  const [text, setText] = useState("");
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    await fetch(
+      "https://viajesrosales.netlify.app/api/subscriptions/send-email",
+      {
+        method: "POST",
+        body: http.Body.json({
+          key: settings.access.key,
+          imageSrc: imageSrc,
+          text: text,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    
+  };
+
+  const handleImageUpload = (event) => {
+    setImageSrc(event.target.value);
+  };
+
   const { settings } = useSettings();
 
   useEffect(() => {
@@ -22,12 +48,9 @@ export default function Emails({ selected }) {
           }),
           headers: {
             "Content-Type": "application/json",
-          }
+          },
         }
       );
-
-      console.log(data.data);
-
 
       let fetchedSubscriptions = [];
 
@@ -54,25 +77,55 @@ export default function Emails({ selected }) {
     getAllSubscriptions();
   }, [settings]);
 
-
   if (selected == "Correos") {
     return (
       <>
         <div className="flex flex-col items-start justify-start pt-10 border w-full px-10">
-          <h1 className="text-2xl font-semibold text-center mb-2">
-            Llaves de accesos
-          </h1>
+          <h1 className="text-2xl font-semibold text-center mb-2">Emails</h1>
           <h2 className="text-[12px] text-gray-700 font-normal mr-40 mb-2">
-            Las llaves son un identificador único que se utiliza para acceder a
-            la API de Viajes Rosales, puedes crear llaves para permitir el
-            acceso a mas usuarios. tambien puedes eliminar llaves para elimnar
-            el acceso.
+            Gestiona los emails registrados en la aplicacion, bloquea emails
+            para evitar que se envien correos o desbloquealos para hacer lo
+            contrario. 
           </h2>
-
-          <h3 className="text-[12px] text-red-500 font-normal mb-5 mr-40">
-            Eliminar todas las llaves de acceso puede eliminar el acceso a todas
-            las funciones de la aplicacion, esto no se puede deshacer.
+          <h3 className="text-[14px] font-bold mb-5 mr-40">
+          Envia un correo electronico con la url de la imagen, y un texto descriptivo.
           </h3>
+          <form
+            onSubmit={handleSubmit}
+            className="flex flex-col space-y-4 w-full"
+          >
+            <label className="flex flex-col w-full">
+              Text
+              <input
+                type="text"
+                onChange={() => {
+                  setText(event.target.value);
+                }}
+                className="mt-1 p-2 border rounded w-full"
+                accept="image/*"
+                required
+              />
+            </label>
+            <label className="flex flex-col w-full">
+              Imagen:
+              <input
+                type="text"
+                onChange={handleImageUpload}
+                className="mt-1 p-2 border rounded w-full"
+                accept="image/*"
+                required
+              />
+            </label>
+            <button
+              disabled={!imageSrc || !text}
+              type="submit"
+              className="p-2 bg-blue-500 active:bg-blue-700 text-white rounded"
+            >
+              Enviar Imagen
+            </button>
+          </form>
+
+          <img src={imageSrc} alt="Imagen" className="w-32 h-32 rounded-lg" />
 
           <div class="relative overflow-x-auto border w-full sm:rounded-lg">
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -87,7 +140,12 @@ export default function Emails({ selected }) {
               <tbody>
                 {allSubscriptions.length > 0 ? (
                   allSubscriptions.map((subscription) => (
-                    <TableElement key={subscription.id} keyItem={settings.access.key} subscription={subscription} setAllSubscriptions={setAllSubscriptions} />
+                    <TableElement
+                      key={subscription.id}
+                      keyItem={settings.access.key}
+                      subscription={subscription}
+                      setAllSubscriptions={setAllSubscriptions}
+                    />
                   ))
                 ) : status === 404 ? (
                   <tr>
